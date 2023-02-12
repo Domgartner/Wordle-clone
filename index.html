@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Wordle</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="game">
+        <header>
+             <h1 class="title">Wordle</h1>
+             <div class="icons-right">
+              <div id="color-change">
+                <p id="dark-mode">&#9681;</p>
+              </div>
+              <div id="hint">
+                <p>&#63;</p>
+              </div>
+              <div id="info">
+                <p>&#9432;</p>
+              </div>
+            </div>
+        </header>
+        <div class="win-screen">
+          <div class="congrats-gif">
+            <img class="win-img" src="https://res.cloudinary.com/mkf/image/upload/v1675467141/ENSF-381/labs/congrats_fkscna.gif" alt="Win GIF" />
+          </div>
+          <div id="win-button">
+            <button class="restart">Start Over</button>
+          </div>
+          <div class="correct-word">
+            <p id="message">You guessed the word <span id="word"></span> correctly!</p>
+          </div>
+        </div>
+        <div id="board-container">
+          <div id="board"></div>
+        </div>
+        <div id="button">
+          <button class="start-over">Start Over</button>
+        </div>
+        <div id="how-to-play">
+          <hr class="vertical">
+          <h2 id="instruction-title">How To Play</h2>
+          <ul>
+            <li>Start typing. The letters will appear in the boxes</li>
+            <li>Remove letters with Backspace</li>
+            <li>Hit Enter/Return to submit an answer</li>
+            <li>Letters with green background are in the right spot</li>
+            <li>Letters with yellow background exist in the word, but are in the wrong spots</li>
+            <li>Letters with gray background do not exist in the word</li>
+            <li>If you need a hint, click the ? icon</li>
+          </ul>
+        </div>
+        <div class="key-display">
+          <div class="square-key" id="keyboard"></div>
+        </div>
+        <div class="lose-screen">
+          <div class="wrong_word">
+            <p id="message">You missed the word <span id="word2"></span> and lost!</p>
+          </div>
+        </div>
+        <br><br><br>
+        <div class="hint-screen">
+          <div class="hint-section">
+            <p><i>Hint:  &nbsp;  </i><span id="hint-text"> </span>.</p>
+          </div>
+        </div>
+        <br><br><br>
+        <footer>
+          <p>© Dominic Gartner 2023</p>
+        </footer>
+      </div>
+    </div>
+    <script src="./wordle.js"></script>
+  </body>
+</html>
