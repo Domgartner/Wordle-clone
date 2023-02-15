@@ -1,5 +1,47 @@
-// grid creation
-document.addEventListener("DOMContentLoaded", () => {
+// // grid creation
+// document.addEventListener("DOMContentLoaded", () => {
+//   const button = document.getElementsByClassName("start-over");
+//   button.innerText = "Loading...";
+//   button.disabled = true;
+//   createSquares();
+//   function createSquares() {
+//       const gameBoard = document.getElementById("board")
+//       for (let index = 0; index < 16; index++) {
+//           let square = document.createElement("div")
+//           square.classList.add("square");
+//           square.setAttribute("id", index+1);
+//           gameBoard.appendChild(square);
+//       }
+//   }
+// });
+
+
+let data;
+let dictionary;
+let currentWord;
+
+// async function fetchWords() {
+//   const button = document.getElementById("dog");
+//   console.log("CATTTTTTT");
+//   button.innerText = "Loading...";
+//   button.disabled = true;
+// const res = await fetch("https://api.masoudkf.com/v1/wordle", {
+//     headers: {
+//     "x-api-key": "sw0Tr2othT1AyTQtNDUE06LqMckbTiKWaVYhuirv",
+//     },
+// });
+//   const data = await res.json();
+//   dictionary = data.dictionary;
+//   console.log(dictionary);
+//   button.innerText = "Start Over";
+//   button.disabled = false;
+// }
+
+// word access
+window.onload = async function () {
+  var currentWord = {word: ''};
+  fetchWords();
+  
   createSquares();
   function createSquares() {
       const gameBoard = document.getElementById("board")
@@ -10,33 +52,34 @@ document.addEventListener("DOMContentLoaded", () => {
           gameBoard.appendChild(square);
       }
   }
-});
-
-
-// word access
-window.onload = async function () {
-  const button = document.getElementsByClassName("start-over");
-  var currentWord = {word: ''};
-  fetchWords();
   async function fetchWords() {
+    const button = document.getElementById("dog");
+    console.log("CATTTTTTT");
+    button.innerText = "Loading...";
+    button.disabled = true;
   const res = await fetch("https://api.masoudkf.com/v1/wordle", {
       headers: {
       "x-api-key": "sw0Tr2othT1AyTQtNDUE06LqMckbTiKWaVYhuirv",
       },
   });
-  button.innerText = "Loading...";
-  button.disabled = true;
-  const data = await res.json();
-  const dictionary = data.dictionary;
-  currentWord = dictionary[Math.floor(Math.random() * dictionary.length)];
-  currentWord.word = currentWord.word.toUpperCase();
-  const wordElement = document.getElementById("word");
-  wordElement.textContent = currentWord.word;
-  const wordElement2 = document.getElementById("word2");
-  wordElement2.textContent = currentWord.word;
-  button.innerText = "Start Over";
-  button.disabled = false;
-}
+    const data = await res.json();
+    dictionary = data.dictionary;
+    console.log(dictionary);
+    button.innerText = "Start Over";
+    button.disabled = false;
+    loader();
+  }
+
+  function loader(){
+    console.log(dictionary);
+    currentWord = dictionary[Math.floor(Math.random() * dictionary.length)];
+    currentWord.word = currentWord.word.toUpperCase();
+    console.log(currentWord.word);
+    const wordElement = document.getElementById("word");
+    wordElement.textContent = currentWord.word;
+    const wordElement2 = document.getElementById("word2");
+    wordElement2.textContent = currentWord.word;
+  }
 
 
 // Colour and worlde playablility
@@ -46,14 +89,14 @@ let currentRow = 0;
 const winScreen = document.querySelector(".win-screen");
 const loseScreen = document.querySelector(".lose-screen");
 let square = document.querySelector(`.square[id='${1}']`);
-square.style.border = "2px solid orange";
+square.style.border = "2px solid rgb(110, 61, 8)";
 document.addEventListener("keyup", function(event) {
   let square = document.querySelector(`.square[id='${i}']`);
   if (event.key === "Enter") {
     if (squaresFilled === 4) {
       if (currentRow < 3) {
         let squareNext = document.querySelector(`.square[id='${i}']`);
-        squareNext.style.border = "2px solid orange";
+        squareNext.style.border = "2px solid rgb(110, 61, 8)";
       }
       if (currentRow < 3){
         let lastSquare1 = document.querySelector(`.square[id='${4}']`);
@@ -116,7 +159,7 @@ document.addEventListener("keyup", function(event) {
           squareNext = document.querySelector(`.square[id='${i+1}']`);
           squareNext.style.border = "2px solid rgb(158, 158, 158)";
           squareBack = document.querySelector(`.square[id='${i}']`);
-          squareBack.style.border = "2px solid orange";
+          squareBack.style.border = "2px solid rgb(110, 61, 8)";
         }
     }
   }
@@ -129,7 +172,7 @@ document.addEventListener("keyup", function(event) {
     if (squaresFilled < 4){
       square.style.border = "2px solid rgb(158, 158, 158)";
       squareNext = document.querySelector(`.square[id='${i}']`);
-      squareNext.style.border = "2px solid orange";
+      squareNext.style.border = "2px solid rgb(110, 61, 8)";
       }
   }
 }
@@ -163,6 +206,15 @@ winRestartButton.addEventListener("click", resetGame);
 
 
 function resetGame(event) {
+  startOverButton.blur();
+       startOverButton.addEventListener("keydown", function(event) {
+           if (event.key === "Enter") {
+             event.preventDefault();
+             startOverButton.blur(); 
+           }
+         });
+
+
   if (event.target.tagName === "BUTTON") {
     winScreen.classList.remove("win-active");
     loseScreen.classList.remove("lose-active");
@@ -181,11 +233,11 @@ function resetGame(event) {
   });
   document.getElementById("board-container").style.display = "flex";
   let square = document.querySelector(`.square[id='${1}']`);
-  square.style.border = "2px solid orange";
+  square.style.border = "2px solid rgb(110, 61, 8)";
   i = 1;
   squaresFilled = 0;
   currentRow = 0;
-  fetchWords();
+  loader();
 }};
 
 
