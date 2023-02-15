@@ -1,297 +1,301 @@
 body {
-    margin: 0;
-    background-color: rgb(234, 234, 234);
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  a {
-    cursor: pointer;}
+  margin: 0;
+  background-color: rgb(234, 234, 234);
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  cursor: pointer;}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  height: 90px;
+}
   
-  header {
+.title {
+  text-align: center;
+  font-size: 2.6em;
+}
+
+.icons-right {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 20px;
+}
+
+#board-container {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  height: 55vh;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+  grid-gap: 3px;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+.square {
+  border: 2px solid rgb(169, 169, 169);
+  min-width: 85px;
+  text-align: center;
+  min-height: 80px;
+  font-size: 4rem;
+}
+
+#color-change, #hint, #info {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#color-change p, #hint p, #info p {
+  font-size: 1.6em;
+}
+
+button:focus {
+  box-shadow: 10px 10px 5px #656565;
+}
+
+#color-change:hover, #hint:hover, #info:hover {
+  background-color:rgb(196, 196, 196, 0.5);
+  cursor: pointer;
+}
+
+#color-change, #hint, #info {
+  padding: 20px;
+}
+
+.start-over {
+  font-size: 1.8em;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: rgb(90, 184, 90);
+  color: white;
+}
+#button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(80, 153, 80);
+}
+
+.restart {
+  font-size: 1.8em;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: rgb(90, 184, 90);
+  color: white;
+}
+
+footer {
+  text-align: center;
+  border-top: 1px solid black;
+}
+
+body.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+body.dark-mode p {
+  color: white;
+}
+
+body.dark-mode .square {
+  border-color: white;
+}
+
+.dark-mode header {
+  border-bottom: 1px solid white;
+}
+.dark-mode footer {
+  border-top: 1px solid white;
+}
+
+#how-to-play {
+  position: absolute;
+  font-size: 1.1em;
+  top: 18%;
+  right: 3%;
+  width: 30%;
+  height: 100%;
+
+}
+
+#how-to-play ul li {
+  padding: 10px 0;
+  list-style: circle;
+}
+
+.vertical {
+  border-left: 1px solid black;
+  height: 70%;
+  position: absolute;
+  top: -7%;
+  right: 110%;
+}
+
+@media only screen and (max-width: 700px) {
+  #color-change, #hint, #info {
+    padding: 10px;
+  }
+  #color-change, #hint, #info {
+    width: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid black;
-    height: 90px;
   }
-    
-  .title {
-    text-align: center;
-    font-size: 2.6em;
+}
+
+@media only screen and (max-width: 650px) {
+  .vertical {
+    display: none;
   }
-  
-  .icons-right {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 20px;
-  }
-  
   #board-container {
+    width: 100%;
+  }
+  #how-to-play{
     display: flex;
-    align-content: center;
     align-items: center;
-    justify-content: center;
-    height: 55vh;
+    width: 93%;
+    height: auto;
+    border: 2px solid black;
+    background-color: rgb(177, 177, 177, 0.9);
+    font-size: 1.3em;
   }
-  
-  #board {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 10px;
-    grid-gap: 3px;
-    box-sizing: border-box;
-    align-self: center;
-  }
-  
-  .square {
-    border: 2px solid grey;
-    min-width: 85px;
+  #instruction-title {
     text-align: center;
-    min-height: 80px;
-    font-size: 4rem;
   }
-  
-  #color-change, #hint, #info {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #color-change p, #hint p, #info p {
-    font-size: 1.6em;
-  }
-  
-  #color-change:hover, #hint:hover, #info:hover {
-    background-color:rgb(196, 196, 196, 0.5);
-    cursor: pointer;
-  }
-  
-  #color-change, #hint, #info {
-    padding: 20px;
-  }
-  
-  .start-over {
-    font-size: 1.8em;
-    padding: 10px;
-    border-radius: 7px;
-    background-color: rgb(90, 184, 90);
-    color: white;
-  }
-  #button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 70px;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: rgb(80, 153, 80);
-  }
-  
-  .restart {
-    font-size: 1.8em;
-    padding: 10px;
-    border-radius: 7px;
-    background-color: rgb(90, 184, 90);
-    color: white;
-  }
-  
   footer {
     text-align: center;
     border-top: 1px solid black;
+    margin-top: 300px;
   }
-  
-  body.dark-mode {
-    background-color: black;
-    color: white;
-  }
-  
-  body.dark-mode p {
-    color: white;
-  }
-  
-  body.dark-mode .square {
-    border-color: white;
-  }
-  
-  .dark-mode header {
-    border-bottom: 1px solid white;
-  }
-  .dark-mode footer {
-    border-top: 1px solid white;
-  }
-  
-  #how-to-play {
-    position: absolute;
-    font-size: 1.1em;
-    top: 18%;
-    right: 3%;
-    width: 30%;
-    height: 100%;
-  
-  }
-  
-  #how-to-play ul li {
-    padding: 10px 0;
-    list-style: circle;
-  }
-  
-  .vertical {
-    border-left: 1px solid black;
-    height: 70%;
-    position: absolute;
-    top: -7%;
-    right: 110%;
-  }
-  
-  @media only screen and (max-width: 700px) {
-    #color-change, #hint, #info {
-      padding: 10px;
-    }
-    #color-change, #hint, #info {
-      width: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-  
-  @media only screen and (max-width: 650px) {
-    .vertical {
-      display: none;
-    }
-    #board-container {
-      width: 100%;
-    }
-    #how-to-play{
-      display: flex;
-      align-items: center;
-      width: 93%;
-      height: auto;
-      border: 2px solid black;
-      background-color: rgb(177, 177, 177, 0.9);
-      font-size: 1.3em;
-    }
-    #instruction-title {
-      text-align: center;
-    }
-    footer {
-      text-align: center;
-      border-top: 1px solid black;
-      margin-top: 300px;
-    }
-  }
-  
-  
-  .green_match {
-    background-color: rgba(172, 236, 172, 0.693);
-  }
-  .yellow_match {
-    background-color: rgba(229, 239, 178, 0.684);
-  }
-  .dark-mode .green_match {
-    background-color: rgba(172, 236, 172, 0.693);
-  }
-  .dark-mode .yellow_match {
-    background-color: rgba(229, 239, 178, 0.684);
-  }
-  .no_match {
-    background-color: grey;
-  }
-  .dark-mode .no_match {
-    background-color: grey;
-  }
-  
-  .win-screen {
-    display: none;
-  }
-  
-  .win-active {
-    display: flex;
-    font-size: 1.1em;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .win-active .correct-word #message {
-    background-color: green;
-    padding: 15px;
-    margin-top: 60px;
-    font-size: 1.1em;
-    width: 100%;
-    left: 0;
-    right: 0;
-    position: absolute;
-  }
-  
-  
-  .win-active .correct-word #message span { 
-    font-weight: 900;
-    font-size: 1.2em;
-  }
-  
-  .lose-screen {
-    display: none;
-  }
-  
-  .lose-active {
-    display: flex;
-    background-color: rgb(202, 48, 48);
-    margin-top: 40px;
-    font-size: 1.1em;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .lose-active span {
-    font-weight: 900;
-    font-size: 1.2em;
-  }
-  
-  .hint-screen {
-    position: relative;
-  }
-  
-  .hint-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 55px;
-    width: 100%;
-    border-bottom: 1px solid black;
-    background-color: rgb(214, 187, 152, 0.9);
-    font-size: 1.1em;
-    position: absolute;
-  }
-  
-  .key-display {
-    display: flex;
-    align-items: center;
-    width: 100px;
-    height: 10px;  
-    margin: 0 auto;
-  }
-  
-  .square-key {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    background-color: #656565;
-    color: white;
-    border: 2px solid black;
-    padding-left: 4px;
-    border-radius: 20%;
-    font-size: 3.3em;
-  }
+}
+
+
+.green-back {
+  background-color: rgba(172, 236, 172, 0.693);
+}
+.yellow-back {
+  background-color: rgba(229, 239, 178, 0.684);
+}
+.dark-mode .green-back {
+  background-color: rgba(172, 236, 172, 0.693);
+}
+.dark-mode .yellow-back {
+  background-color: rgba(229, 239, 178, 0.684);
+}
+.grey-back {
+  background-color: grey;
+}
+.dark-mode .grey-back {
+  background-color: grey;
+}
+
+.win-screen {
+  display: none;
+}
+
+.win-active {
+  display: flex;
+  font-size: 1.1em;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.win-active .correct-word #message {
+  background-color: green;
+  padding: 15px;
+  margin-top: 60px;
+  font-size: 1.1em;
+  width: 100%;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+
+.win-active .correct-word #message span { 
+  font-weight: 900;
+  font-size: 1.2em;
+}
+
+.lose-screen {
+  display: none;
+}
+
+.lose-active {
+  display: flex;
+  background-color: rgb(202, 48, 48);
+  margin-top: 40px;
+  font-size: 1.1em;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lose-active span {
+  font-weight: 900;
+  font-size: 1.2em;
+}
+
+.hint-screen {
+  position: relative;
+}
+
+.hint-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  background-color: rgb(214, 187, 152, 0.9);
+  font-size: 1.1em;
+  position: absolute;
+}
+
+.key-display {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 10px;  
+  margin: 0 auto;
+}
+
+.square-key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: #656565;
+  color: white;
+  border: 2px solid black;
+  padding-left: 4px;
+  border-radius: 20%;
+  font-size: 3.3em;
+}
