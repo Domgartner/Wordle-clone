@@ -1,41 +1,6 @@
-// // grid creation
-// document.addEventListener("DOMContentLoaded", () => {
-//   const button = document.getElementsByClassName("start-over");
-//   button.innerText = "Loading...";
-//   button.disabled = true;
-//   createSquares();
-//   function createSquares() {
-//       const gameBoard = document.getElementById("board")
-//       for (let index = 0; index < 16; index++) {
-//           let square = document.createElement("div")
-//           square.classList.add("square");
-//           square.setAttribute("id", index+1);
-//           gameBoard.appendChild(square);
-//       }
-//   }
-// });
-
-
 let data;
 let dictionary;
 let currentWord;
-
-// async function fetchWords() {
-//   const button = document.getElementById("dog");
-//   console.log("CATTTTTTT");
-//   button.innerText = "Loading...";
-//   button.disabled = true;
-// const res = await fetch("https://api.masoudkf.com/v1/wordle", {
-//     headers: {
-//     "x-api-key": "sw0Tr2othT1AyTQtNDUE06LqMckbTiKWaVYhuirv",
-//     },
-// });
-//   const data = await res.json();
-//   dictionary = data.dictionary;
-//   console.log(dictionary);
-//   button.innerText = "Start Over";
-//   button.disabled = false;
-// }
 
 // word access
 window.onload = async function () {
@@ -54,7 +19,6 @@ window.onload = async function () {
   }
   async function fetchWords() {
     const button = document.getElementById("dog");
-    console.log("CATTTTTTT");
     button.innerText = "Loading...";
     button.disabled = true;
   const res = await fetch("https://api.masoudkf.com/v1/wordle", {
@@ -64,23 +28,19 @@ window.onload = async function () {
   });
     const data = await res.json();
     dictionary = data.dictionary;
-    console.log(dictionary);
     button.innerText = "Start Over";
     button.disabled = false;
     loader();
   }
 
   function loader(){
-    console.log(dictionary);
     currentWord = dictionary[Math.floor(Math.random() * dictionary.length)];
     currentWord.word = currentWord.word.toUpperCase();
-    console.log(currentWord.word);
     const wordElement = document.getElementById("word");
     wordElement.textContent = currentWord.word;
     const wordElement2 = document.getElementById("word2");
     wordElement2.textContent = currentWord.word;
   }
-
 
 // Colour and worlde playablility
 let i = 1;
@@ -138,7 +98,6 @@ document.addEventListener("keyup", function(event) {
             loseScreen.classList.add("lose-active");
             return;
         }
-        console.log("currentRow:" + currentRow);
         currentRow++;
         squaresFilled = 0;
     }
@@ -167,8 +126,6 @@ document.addEventListener("keyup", function(event) {
     square.textContent = event.key.toUpperCase();
     i++;
     squaresFilled++;
-    console.log("i:" + i);
-    console.log("squaresFilled:" + squaresFilled);
     if (squaresFilled < 4){
       square.style.border = "2px solid rgb(158, 158, 158)";
       squareNext = document.querySelector(`.square[id='${i}']`);
@@ -177,7 +134,6 @@ document.addEventListener("keyup", function(event) {
   }
 }
 );
-
 
 // Key Display
 const keyDisplay = document.getElementById("keyboard");
@@ -197,13 +153,11 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
-
 // Start Over
 const startOverButton = document.getElementById("button");
 const winRestartButton = document.querySelector(".restart")
 startOverButton.addEventListener("click", resetGame);
 winRestartButton.addEventListener("click", resetGame);
-
 
 function resetGame(event) {
   startOverButton.blur();
@@ -213,7 +167,6 @@ function resetGame(event) {
              startOverButton.blur(); 
            }
          });
-
 
   if (event.target.tagName === "BUTTON") {
     winScreen.classList.remove("win-active");
@@ -239,7 +192,6 @@ function resetGame(event) {
   currentRow = 0;
   loader();
 }};
-
 
 // How to Play
 const playInfo = document.getElementById("how-to-play");
@@ -275,7 +227,6 @@ if (mq.matches) {
 }
 });
 
-
 // Hint
 const hintarea = document.querySelector(".hint-screen")
 const hintText = document.getElementById("hint-text");
@@ -289,7 +240,6 @@ hintbtn.addEventListener("click", function() {
       hintText.textContent = currentWord.hint;}
 });
 };
-
 
 // Dark Mode
 const darkMode = document.querySelector("#color-change");
